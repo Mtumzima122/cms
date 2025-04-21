@@ -47,6 +47,8 @@ $departments_result = mysqli_query($conn, $departments_query);
     <title>Add New Admin</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
         body { background-color: #f8f9fa; }
         .sidebar {
@@ -68,7 +70,7 @@ $departments_result = mysqli_query($conn, $departments_query);
     </style>
 </head>
 <body>
-    <div class="sidebar">
+    <!-- <div class="sidebar">
         <h4 class="text-center">Admin Panel</h4>
         <a href="admin_dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a>
         <a href="manage_complaints.php"><i class="fas fa-tasks"></i> Manage Complaints</a>
@@ -77,7 +79,16 @@ $departments_result = mysqli_query($conn, $departments_query);
         <a href="add_admin.php"><i class="fas fa-user-plus"></i> Add New Admin</a>
         <a href="add_department.php"><i class="fas fa-building"></i> Add New Department</a>
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
-    </div>
+    </div> -->
+    <div class="sidebar">
+  <h4 class="text-center">Admin Panel</h4>
+  <a href="admin_dashboard.php"><i class="bi bi-speedometer2"></i> Dashboard</a>
+  <a href="manage_complaints.php"><i class="bi bi-exclamation-triangle"></i> Manage Complaints</a>
+  <a href="manage_suggestion.php"><i class="bi bi-lightbulb"></i> Manage Suggestions</a>
+  <a href="new_admin.php"><i class="bi bi-person-plus"></i> Add New Admin</a>
+  <a href="reset_password.php"><i class="bi bi-key"></i> Reset Password</a>
+  <a href="/cms/test/login/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
+</div>
     <div class="content">
         <h2>Add New Admin</h2>
         <?php if (isset($error_message)) echo "<div class='alert alert-danger'>$error_message</div>"; ?>
