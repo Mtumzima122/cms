@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Complaint Management System</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* Color Theme: Blue & White */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #003366;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      background-color: #003366;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .navbar-brand {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: white !important;
+    }
+    .btn-login {
+      background: white;
+      color: #003366;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 30px;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+    .btn-login:hover {
+      background: #e2e6ea;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background-color: white;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #003366;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      opacity: 0.85;
+      color: #003366;
+    }
+    .btn-custom {
+      background: #003366;
+      color: white;
+      padding: 10px 22px;
+      font-size: 1rem;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+    .btn-custom:hover {
+      background: #0056b3;
+    }
+    .separator {
+      margin: 20px 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    /* Features Section */
+    .features {
+      margin-top: 50px;
+    }
+    .feature-box {
+      text-align: center;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .feature-box i {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #003366;
+    }
+    .feature-box h4 {
+      color: #003366;
+    }
+    .feature-box p {
+      color: #333;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 15px;
+      background: #003366;
+      color: white;
+      margin-top: 50px;
+    }
+
+    .container-space {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container-space container">
+      <a class="navbar-brand" href="#">Complaint Management</a>
+      <a href="admin_login.html" class="btn btn-login">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Effortless Complaint Management</h1>
+    <p>Submit your complaints seamlessly and let the right department handle them efficiently.</p>
+    <a href="test.php" class="btn btn-custom d-block mx-auto mb-2">Submit a Complaint</a>
+    <div class="separator">or</div>
+    <a href="suggestion_form.php" class="btn btn-custom d-block mx-auto mt-2">Submit a Suggestion</a>
+  </section>
+
+  <!-- Features Section -->
+  <div class="container features text-center">
+    <div class="row">
+      <div class="col-md-4 feature-box">
+        <i class="fas fa-bullhorn"></i>
+        <h4>Easy Complaint Submission</h4>
+        <p>Quickly file complaints with optional evidence.</p>
+      </div>
+      <div class="col-md-4 feature-box">
+        <i class="fas fa-users"></i>
+        <h4>Department-Based Handling</h4>
+        <p>Your complaint reaches the right department instantly.</p>
+      </div>
+      <div class="col-md-4 feature-box">
+        <i class="fas fa-lock"></i>
+        <h4>Secure & Confidential</h4>
+        <p>We ensure your complaints remain private.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Complaint Management System. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS (Optional) -->
+  <script src="bootstrap5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
