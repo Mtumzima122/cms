@@ -1,4 +1,7 @@
 <?php
+// Start session immediately
+session_start();
+
 // Error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -11,46 +14,59 @@ if ($conn->connect_error) {
 
 // Check if form is submitted
 if (isset($_POST['submit'])) {
-    $department_id = $_POST['department'];
-    $category_id = !empty($_POST['category']) ? $_POST['category'] : NULL;
-    $title = $_POST['title'];
-    $complaint = $_POST['complaint'];
+    // Collect form data safely
+    $department_id = $_POST['department'] ?? null;
+    $category_id = !empty($_POST['category']) ? $_POST['category'] : null;
+    $title = trim($_POST['title'] ?? '');
+    $complaint = trim($_POST['complaint'] ?? '');
+
+    // Validate required fields
+    if (empty($department_id) || empty($title) || empty($complaint)) {
+        echo "<script>alert('Please fill in all required fields.'); window.history.back();</script>";
+        exit;
+    }
 
     // Insert complaint into the database
     $query = $conn->prepare("INSERT INTO complaints (department_id, category_id, subject, deatails) VALUES (?, ?, ?, ?)");
     $query->bind_param("iiss", $department_id, $category_id, $title, $complaint);
 
     if ($query->execute()) {
-        // Insert notification for the respective department
+        // Insert notification
         $notif_msg = "New complaint submitted.";
-        
-        // Check if the logged-in admin is super admin or HOD
-        session_start();
-        $admin_id = $_SESSION['admin_id']; // Assuming admin_id is saved in session
-        $admin_role = $_SESSION['role']; // Assuming role is saved in session
 
-        // If admin is super admin, notify all departments
-        if ($admin_role == 'super Admin') {
-            $notif_stmt = $conn->prepare("INSERT INTO notifications (type, message) VALUES ('complaint', ?)");
-            $notif_stmt->bind_param("s", $notif_msg);
-            $notif_stmt->execute();
-            $notif_stmt->close();
-        } else {
-            // If admin is HOD, notify only their department
-            $notif_stmt = $conn->prepare("INSERT INTO notifications (type, message, department_id) VALUES ('complaint', ?, ?)");
-            $notif_stmt->bind_param("si", $notif_msg, $department_id);
+        // Check if session variables are set
+        if (isset($_SESSION['admin_id']) && isset($_SESSION['role'])) {
+            $admin_id = $_SESSION['admin_id'];
+            $admin_role = $_SESSION['role'];
+
+            // Notification logic based on role
+            if (strtolower($admin_role) === 'super admin') {
+                $notif_stmt = $conn->prepare("INSERT INTO notifications (type, message) VALUES ('complaint', ?)");
+                $notif_stmt->bind_param("s", $notif_msg);
+            } else {
+                $notif_stmt = $conn->prepare("INSERT INTO notifications (type, message, department_id) VALUES ('complaint', ?, ?)");
+                $notif_stmt->bind_param("si", $notif_msg, $department_id);
+            }
+
             $notif_stmt->execute();
             $notif_stmt->close();
         }
 
-        echo "<script>alert('Complaint submitted successfully!'); window.location.href='index.html';</script>";
+        // Success message and redirect
+        echo "<script>
+                alert('Complaint submitted successfully!');
+                window.location.href='index.html';
+              </script>";
+        exit;
     } else {
-        echo "Error: " . $conn->error;
+        // If error during query execution
+        echo "<script>alert('Error submitting complaint: " . $conn->error . "'); window.history.back();</script>";
+        exit;
     }
 
     $query->close();
 }
 
-// Close database connection
+// Close connection
 $conn->close();
 ?>
