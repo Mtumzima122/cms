@@ -26,7 +26,7 @@ if ($conn->connect_error) {
 if (isset($_GET['delete'])) {
     $adminId = $_GET['delete'];
     $conn->query("DELETE FROM admins WHERE admin_id = $adminId");
-    header("Location: manage_admins.php");
+    header("Location: manage_admin.php");
     exit();
 }
 
@@ -80,7 +80,7 @@ $result = $conn->query($sql);
     <a href="admin_dashboard.php"><i class="fas fa-chart-line"></i> Dashboard</a>
     <a href="manage_complaints.php"><i class="fas fa-tasks"></i> Manage Complaints</a>
     <a href="manage_suggestions.php"><i class="fas fa-lightbulb"></i> Manage Suggestions</a>
-    <a href="manage_admins.php"><i class="fas fa-users"></i> Manage Admins</a>
+    <a href="manage-admins.php"><i class="fas fa-users"></i> Manage Admins</a>
     <a href="add_admin.php"><i class="fas fa-user-plus"></i> Add New Admin</a>
     <a href="add_department.php"><i class="fas fa-building"></i> Add New Department</a>
     <a href="/cms/test/login/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>

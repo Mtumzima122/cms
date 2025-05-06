@@ -90,7 +90,6 @@ $result = mysqli_query($conn, $sql);
                     <th>Department</th>
                     <th>Subject</th>
                     <th>Details</th>
-                    <th>Evidence</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,13 +99,6 @@ $result = mysqli_query($conn, $sql);
                         <td><?= $row['department_name'] ?></td>
                         <td><?= $row['subject'] ?></td>
                         <td><?= $row['deatails'] ?></td>
-                        <td>
-                            <?php if (!empty($row['evidance'])): ?>
-                                <a href="../uploads/<?= $row['evidance'] ?>" target="_blank">View</a>
-                            <?php else: ?>
-                                None
-                            <?php endif; ?>
-                        </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
