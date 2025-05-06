@@ -93,6 +93,11 @@ if ($role === 'super Admin') {
   <a href="manage_complaints.php"><i class="bi bi-exclamation-triangle"></i> Manage Complaints</a>
   <a href="manage_suggestion.php"><i class="bi bi-lightbulb"></i> Manage Suggestions</a>
   <a href="new_admin.php"><i class="bi bi-person-plus"></i> Add New Admin</a>
+  <!-- <a href="manage_admin.php"><i class="bi bi-person-plus"></i> manage_admins</a> -->
+  <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'super Admin'): ?>
+    <a href="manage_admin.php"><i class="bi bi-person-plus"></i> Manage Admins</a>
+<?php endif; ?>
+
   <a href="reset_password.php"><i class="bi bi-key"></i> Reset Password</a>
   <a href="/cms/test/login/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
 </div>
